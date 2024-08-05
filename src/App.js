@@ -1,13 +1,24 @@
 import Login from "./components/login";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Dashboard from "./components/dashboard";
+import Employees from "./components/employees";
+import Financial from "./components/financial";
+import PrivateRoute from "./components/privateRoute";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />}/>
-        <Route path="/dashboard" element={<Dashboard />}/>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={< PrivateRoute element={<Dashboard/>}/>} />
+        <Route path="/dashboard/financial" element={<PrivateRoute element={<Financial/>} />} />
+        <Route path="/dashboard/employees" element={<PrivateRoute element={<Employees/>} />} />
       </Routes>
     </Router>
   );
