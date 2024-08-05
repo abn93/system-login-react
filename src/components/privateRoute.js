@@ -2,7 +2,7 @@ import React from "react";
 
 import { Navigate, useLocation } from "react-router-dom";
 
-const PrivateRoute = ({element, ...rest}) => {
+const PrivateRoute = ({element}) => {
     const location = useLocation();
     const accessToken = localStorage.getItem('accessToken');
 
